@@ -1,0 +1,21 @@
+[package]
+name = "apricus"
+version = "0.1.0"
+edition = "2021"
+description = "Simple Ethereum wallet"
+homepage = "https://github.com/GildedHonour/apricus"
+keywords = ["wallet", "ethereum", "eth"]
+license = "GPLv3"
+readme = "README.md"
+repository = "https://github.com/GildedHonour/apricus"
+authors = ["Alex Maslakov <a99@serendipia.email>"]
+
+[dependencies]
+anyhow = "1.0"
+dotenv = "0.15"
+secp256k1 = { version = "0.23", features = ["rand"] }
+tokio = { version= "1.19", features = ["full"] }
+web3 = "0.18"
+serde = { version = "1.0", features = ["derive"]}
+serde_json = "1.0"
+tiny-keccak = { version = "2.0", features = ["sha3"] }
