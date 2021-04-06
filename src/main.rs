@@ -16,8 +16,8 @@ async fn main() -> Result<()> {
     println!("public address: {:?}", pub_address);
 
     if !Path::new(WALLET_FILE_PATH).exists() {
-        let crypto_wallet = eth_wallet::Wallet::new(&secret_key, &pub_key);
-        crypto_wallet.save_to_file(WALLET_FILE_PATH)?;
+        let wallet = eth_wallet::Wallet::new(&secret_key, &pub_key);
+        wallet.save_to_file(WALLET_FILE_PATH)?;
     }
 
     let loaded_wallet = eth_wallet::Wallet::from_file(WALLET_FILE_PATH)?;
@@ -27,7 +27,7 @@ async fn main() -> Result<()> {
     let web3_con = eth_wallet::establish_web3_connection(&endpoint).await?;
 
     let balance = loaded_wallet.get_balance_in_eth(&web3_con).await?;
-    println!("wallet balance: {} eth", &balance);
+    println!("balance: {} eth", &balance);
 
     Ok(())
 }
